@@ -32,4 +32,12 @@ public class ProdutoService {
     public void deletarPorId(Long id) {
         produtoRepository.deleteById(id);
     }
+
+    public Produto atualizarProduto(Long id, Produto produto){
+        Produto novoProduto = produtoRepository.findById(id).get();
+        novoProduto.setNome(produto.getNome());
+        novoProduto.setPreco(produto.getPreco());
+        novoProduto.setEstoque(produto.getEstoque());
+        return produtoRepository.save(novoProduto);
+    }
 }
